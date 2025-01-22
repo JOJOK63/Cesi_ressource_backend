@@ -1,0 +1,7 @@
+# ignore ALL
+*
+
+#keep  uniquement les documents lier au jar pour réduire la taille de l'image
+!target/*.jar
+!src/
+!pom.xml
