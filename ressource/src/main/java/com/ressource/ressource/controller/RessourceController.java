@@ -25,8 +25,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
-     * Controller Ressources
-     */
+ * Controller Ressources
+ */
 @Log4j2
 @RestController
 @RequestMapping("/ressources")
@@ -39,7 +39,7 @@ public class RessourceController {
     @Autowired
     private UserService userService;
 
-     @GetMapping
+    @GetMapping
     public RessourcesResponse getAll(){
         return new RessourcesResponse(HttpStatus.ACCEPTED,"ok",ressourceService.findAll());
     }
@@ -82,13 +82,13 @@ public class RessourceController {
                 existingRessource = ressourceService.findById(id);
                 if (existingRessource != null)
                     if (existingRessource.getUtilisateur().getId().equals(user.getId()) || user.getRole()!= Role.CITOYEN) {
-                    existingRessource = ressourceDto;
+                        existingRessource = ressourceDto;
 
-                    // Enregistrer la ressource mise à jour
-                    ressourceService.save(existingRessource);
-                    status = HttpStatus.ACCEPTED;
-                    message = "Ressource mise à jour avec succès !";
-                }
+                        // Enregistrer la ressource mise à jour
+                        ressourceService.save(existingRessource);
+                        status = HttpStatus.ACCEPTED;
+                        message = "Ressource mise à jour avec succès !";
+                    }
             }
 
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class RessourceController {
             if (SecurityContext.isConnected()) {
                 UserDto user = userService.findById(SecurityContext.getIdUser());
                 if (user != null) {
-                     existingRessource = ressourceService.findById(id);
+                    existingRessource = ressourceService.findById(id);
                     if (existingRessource != null && existingRessource.getUtilisateur().getId().equals(user.getId())) {
                         // supprimer la ressource
                         ressourceService.deletedById(id);
@@ -157,7 +157,7 @@ public class RessourceController {
 //    public void deleteRessources(@PathVariable Long id, HttpSession httpSession){
 //        ressourceService.deleteRessourcesById(id, httpSession);
 //    }
-        // ------------------- ADMIN ----------------
+    // ------------------- ADMIN ----------------
 
     /*@DeleteMapping("admin/ressources/{id}")
     public void deleteRessources(@PathVariable Long id, HttpSession httpSession){
@@ -200,7 +200,7 @@ public class RessourceController {
 
 
 
-    }
+}
 //
 //
 //    package com.ressource.ressource.controller;
